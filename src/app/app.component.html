@@ -1,0 +1,20 @@
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+  <li [ngbNavItem]="1">
+    <a ngbNavLink>Predict New</a>
+    <ng-template ngbNavContent>
+      <app-predict-new></app-predict-new>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="2">
+    <a ngbNavLink>Prediction List</a>
+    <ng-template ngbNavContent>
+      <app-prediction-list></app-prediction-list>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="3">
+    <a ngbNavLink>Data List</a>
+    <ng-template ngbNavContent>
+    </ng-template>
+  </li>
+</ul>
+<div [ngbNavOutlet]="nav" class="mt-2"></div>

@@ -1,0 +1,61 @@
+<div class="container">
+  <h1>Make A New Prediction</h1>
+  <h5><small>*All fields are required</small></h5>
+  <div class="row">
+    <div class="col-md-6" style="padding: 25px">
+      <h3 *ngIf="success" class="text-success" style="text-align: center">Successfully predicted!</h3>
+      <form (ngSubmit)="onSubmit()">
+        <div class="row">
+          <label>Title</label>
+          <textarea class="form-control" id="title" name="title" [(ngModel)]="newsdata.title"></textarea>
+        </div>
+        <div class="row" style="margin-top: 20px;">
+          <label>Enter the text</label>
+          <textarea class="form-control" id="text" name="text" [(ngModel)]="newsdata.text" style="height: 200px;"></textarea>
+        </div>
+        <div class="row" style="margin-top: 25px">
+      <button type="submit" class="btn btn-lg btn-info">Submit</button>
+    </div>
+      </form>
+    </div>
+    <div class="col-md-6" style="padding: 0; border: 1px solid gray; border-radius: 10px">
+      <h3 style="margin-bottom: 25px; padding: 0; background-color: cadetblue; text-align: center; border-radius: 10px 10px 0 0">Prediction</h3>
+      <div class="row justify-content-center">
+        <h3 style="color: #EF6C00">{{pred.predictionText}}</h3>
+        <div class="col-md-12">
+          <div class="row justify-content-center">
+            <rg-gauge-chart
+              [canvasWidth]="canvasWidth"
+              [needleValue]="needleValue"
+              [centralLabel]="centralLabel"
+              [options]="options"
+              [name]="name"
+              [bottomLabel]="bottomLabel"></rg-gauge-chart>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 20px">
+        <div class="col-md-6">
+          <div class="row" style="margin: 10px 0px 10px 5px">
+            <h5 style="margin-right: 10px">Logit: </h5>
+            <h5><span>{{pred.logits | number:'1.0-2'}}</span></h5>
+          </div>
+          <div class="row" style="margin: 10px 0 10px 5px">
+            <h5 style="margin-right: 10px">Probability: </h5>
+            <h5><span>{{pred.predictionProb | number:'1.0-2'}}</span></h5>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="row" style="margin: 10px 0 10px 5px">
+            <h5 style="margin-right: 10px">Predicted Value: </h5>
+            <h5><span>{{pred.predictionValue | number:'1.0-2'}}</span></h5>
+          </div>
+          <div class="row" style="margin: 10px 0 10px 5px">
+        <h5 style="margin-right: 10px">Predicted Text: </h5>
+        <h5><span>{{pred.predictionText}}</span></h5>
+      </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
